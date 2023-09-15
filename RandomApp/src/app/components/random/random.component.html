@@ -1,6 +1,10 @@
 <div id="container">
 
-  <div class="palabra">
+  <div id="palabra" class="palabra">
     {{show}}
+    
+    <div *ngIf="show == 'FIN'">
+      <ion-button (click)="reiniciar()" color="primary" size="large" style="margin-top: 4%;">REINICIAR</ion-button>
+    </div>
   </div>
 </div>

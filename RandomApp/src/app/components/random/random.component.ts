@@ -8,31 +8,50 @@ import { Observable, interval, switchMap, take } from 'rxjs';
 })
 export class RandomComponent implements OnInit {
 
-  public valores: string[] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "AMARILLO", "ROJO", "AZUL", "NARANJA", "VERDE", "NEGRO", "BLANCO"];
+  // public valores: string[] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "AMARILLO", "ROJO", "AZUL", "NARANJA", "VERDE", "NEGRO"];
   public secuenciaRnd: string[] = [];
-  public cantidadEstimulos : number = 8;  // Máx: 17
+  public cantidadEstimulos : number = 0;  // Máx: 16
 
   public show = "Iniciando...";
 
-  // constructor() { }
-
-
-
-
-
-
-
   constructor() {
+  }
+
+  ngOnInit() {
+
+    this.secuenciaRnd = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "AMARILLO", "ROJO", "AZUL", "NARANJA", "VERDE", "NEGRO"];
+    this.randomize();
+
+    console.log(this.secuenciaRnd);
+    console.log(this.cantidadEstimulos);
+    
+    this.changeValue();
+
+  }
+
+
+  reiniciar(){
+    this.show = "Reiniciando...";
+    this.randomize();
+    console.log(this.secuenciaRnd);
     this.changeValue();
   }
 
+
+  randomize(){
+    this.secuenciaRnd.sort(this.rndSort);
+    this.cantidadEstimulos = 8;
+}
+
   changeValue() {
+    console.log("change value init");
     const changes = interval(5000) // Cambio cada 5 segundos
       .pipe(
         take(this.cantidadEstimulos),
         switchMap(() => {
           // Cambiar el valor
-          this.show = this.secuenciaRnd[this.cantidadEstimulos];
+          this.customizeShow(this.secuenciaRnd[this.cantidadEstimulos]);
+          // this.show = this.secuenciaRnd[this.cantidadEstimulos];
           this.cantidadEstimulos--;
           return this.delay(2000); // Mantener el valor por 2 segundos
         })
@@ -40,10 +59,10 @@ export class RandomComponent implements OnInit {
 
     changes.subscribe(() => {
       // Restaurar el valor por defecto
-      if(this.cantidadEstimulos!=0){
-        this.show = '...';
+      if (this.cantidadEstimulos != 0) {
+        this.customizeShow('...');
       } else {
-        this.show = "FIN";
+        this.customizeShow('FIN');
       }
     });
   }
@@ -57,65 +76,52 @@ export class RandomComponent implements OnInit {
     });
   }
 
+  customizeShow(valor: string) {
+    console.log("customize: " + valor);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  ngOnInit() {
-
-    this.secuenciaRnd = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "AMARILLO", "ROJO", "AZUL", "NARANJA", "VERDE", "NEGRO", "BLANCO"];
-    this.secuenciaRnd.sort(this.rndSort);
-
-    console.log(this.secuenciaRnd);
-
-    // setTimeout(() => {
-    //   this.show = this.secuenciaRnd[this.cantidadEstimulos];
-    //   this.cantidadEstimulos--;
-    //   setTimeout(() => {
-    //     this.show = "...";
-    //     this.realizarCambiosPeriodicos();
-    //   }, 2000);    
-    // }, 2000);
+    switch (valor) {
+      //"AMARILLO", "ROJO", "AZUL", "NARANJA", "VERDE", "NEGRO"
+      case "AMARILLO":
+        this.cambiarColorDeFondo('yellow');
+        this.show = '';
+        break;
+      case "ROJO":
+        this.cambiarColorDeFondo('red');
+        this.show = '';
+        break;
+      case "AZUL":
+        this.cambiarColorDeFondo('blue');
+        this.show = '';
+        break;
+      case "NARANJA":
+        this.cambiarColorDeFondo('orange');
+        this.show = '';
+        break;
+      case "VERDE":
+        this.cambiarColorDeFondo('green');
+        this.show = '';
+        break;
+      case "NEGRO":
+        this.cambiarColorDeFondo('black');
+        this.show = '';
+        break;
+      default:
+        this.cambiarColorDeFondo('white');
+        this.show = valor;
+        break;
+    }
 
   }
 
-  realizarCambiosPeriodicos(){
-    if (this.cantidadEstimulos >= 0) {
-      setTimeout(() => {
-        this.show = this.secuenciaRnd[this.cantidadEstimulos];
-        this.cantidadEstimulos--;
 
-        setTimeout(() => {
-        this.show = "...";
-        }, 2000);
-
-        // Llamar de nuevo a la función para el próximo cambio
-        this.realizarCambiosPeriodicos();
-
-      }, 5000);
-
-    } else {
-      this.show = "FIN";
+  cambiarColorDeFondo(color: string) {
+    // Obtener el elemento <div> por su ID
+    const miDiv = document.getElementById('palabra');
+    // Verificar si se encontró el elemento
+    if (miDiv) {
+      miDiv.style.backgroundColor = color;
     }
   }
-
-
 
   rndSort(a: any, b: any) {
     return 0.5 - Math.random();
