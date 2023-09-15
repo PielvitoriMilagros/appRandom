@@ -1,0 +1,21 @@
+#container {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.801);
+  }
+
+
+  .palabra {
+    font-size: 20vw; /* Tamaño de letra relativo al ancho del viewport */
+    text-align: center; /* Centrar el texto horizontalmente */
+    vertical-align: middle; /* Centrar el texto verticalmente */
+    width: 100%; /* Ocupar todo el ancho disponible */
+    height: 100vh; /* Ocupar todo el alto del viewport */
+    display: flex; /* Usar flexbox para centrar vertical y horizontalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+}

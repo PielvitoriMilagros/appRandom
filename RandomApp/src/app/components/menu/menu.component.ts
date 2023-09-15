@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-menu',
@@ -7,8 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private navControl : NavController) {
+
+   }
 
   ngOnInit() {}
+
+
+  iniciar() {
+    console.log("Click Iniciar");
+    this.navControl.navigateForward('/training');
+
+
+  }
+
+
+
+  configurar() {
+    console.log("Click Configurar");
+    this.navControl.navigateForward('/settings');
+
+
+
+  }
+
+
+
+
 
 }
