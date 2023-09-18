@@ -31,7 +31,7 @@ export class RandomComponent implements OnInit {
 
 
   reiniciar(){
-    this.show = "Reiniciando...";
+    this.show = "Iniciando...";
     this.randomize();
     console.log(this.secuenciaRnd);
     this.changeValue();

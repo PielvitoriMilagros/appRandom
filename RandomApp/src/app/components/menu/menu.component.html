@@ -13,20 +13,37 @@
       <ion-title>ENTRENAMIENTO COGNITIVO</ion-title>
     </ion-card-header>
     <ion-card-content style="margin: 5%;">
-      El entrenamiento cognitivo aplicado al deporte tiene como objetivo el desarrollo de un conjunto de habilidades como la atención y la toma de decisiones a través del entrenamiento enfocado en funciones cognitivas centrales.
+      El entrenamiento cognitivo aplicado al deporte tiene como objetivo el desarrollo de un conjunto de habilidades
+      como la atención y la toma de decisiones a través del entrenamiento enfocado en funciones cognitivas centrales.
     </ion-card-content>
   </ion-card>
 
 
 
-  <img src="../../../assets/soccerBrain.avif" width="50%" style="display: block; margin: auto; border-radius: 20%;" alt=""
-    class="pulsate-fwd">
+  <div *ngIf="pswSetting == false">
+    <img src="../../../assets/soccerBrain.avif" width="50%" style="display: block; margin: auto; border-radius: 20%;"
+      alt="" class="pulsate-fwd">
+  </div>
+
+  <div *ngIf="pswSetting" width="50%" style="display: block; margin: auto; border-radius: 20%;">
+    <div class="form-group row">
+      <ion-item style="margin-bottom: 8%;">
+        <ion-icon name="lock-closed" slot="start"></ion-icon>
+        <ion-input type="password" class="form-control" placeholder="Ingrese clave" name="clave"></ion-input>
+      </ion-item>
+    </div>
+    <div class="form-group row">
+      <ion-button style="margin-bottom: 5%;" size="large" color="warning"
+        (click)="cancelar()"><strong>Cancelar</strong></ion-button>
+    </div>
+  </div>
 
 
-<div class="botones">
-  <ion-button (click)="iniciar()" color="primary" size="large" style="margin-top: 4%;">INICIAR ENTRENAMIENTO</ion-button>
-  <ion-button (click)="configurar()" color="secondary" size="small" style="margin: 10% 5%; opacity: 90%;">CONFIGURAR PARÁMETROS DE ENTRENAMIENTO</ion-button>
+  <div class="botones" *ngIf="pswSetting == false">
+    <ion-button (click)="iniciar()" color="primary" size="large" style="margin-top: 4%;">INICIAR
+      ENTRENAMIENTO</ion-button>
+    <ion-button (click)="configurar()" color="secondary" size="small" style="margin: 10% 5%; opacity: 90%;">CONFIGURAR
+      PARÁMETROS DE ENTRENAMIENTO</ion-button>
+  </div>
+
 </div>
-
-</div>
-

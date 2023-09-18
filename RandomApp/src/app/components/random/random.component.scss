@@ -18,4 +18,6 @@
     display: flex; /* Usar flexbox para centrar vertical y horizontalmente */
     justify-content: center; /* Centrar horizontalmente */
     align-items: center; /* Centrar verticalmente */
+    flex-direction: column;
+
 }

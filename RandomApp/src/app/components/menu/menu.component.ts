@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-menu',
@@ -8,6 +9,8 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent  implements OnInit {
+
+  public pswSetting : boolean = false;
 
   constructor(private navControl : NavController) {
 
@@ -27,12 +30,20 @@ export class MenuComponent  implements OnInit {
 
   configurar() {
     console.log("Click Configurar");
-    this.navControl.navigateForward('/settings');
+
+    this.pswSetting = true;
+
+
+
+    // this.navControl.navigateForward('/settings');
 
 
 
   }
 
+  cancelar(){
+    this.pswSetting = false;
+  }
 
 
 

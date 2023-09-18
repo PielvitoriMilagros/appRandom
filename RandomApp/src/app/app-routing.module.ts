@@ -11,7 +11,11 @@ const routes: Routes = [
   {path: 'home',loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)},
   {path: 'training',loadChildren: () => import('./pages/training/training.module').then( m => m.TrainingPageModule)},
   {path: 'settings',loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)},
-  {path:'**', pathMatch:'full' ,redirectTo:'home'}
+  {path:'**', pathMatch:'full' ,redirectTo:'home'},
+  {
+    path: 'error',
+    loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
+  }
   
 ];
 @NgModule({

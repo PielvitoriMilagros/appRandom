@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { SettingsPageRoutingModule } from './settings-routing.module';
 
 import { SettingsPage } from './settings.page';
+import { PswComponent } from 'src/app/components/psw/psw.component';
+import { ErrorComponent } from 'src/app/components/error/error.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,9 @@ import { SettingsPage } from './settings.page';
     IonicModule,
     SettingsPageRoutingModule
   ],
-  declarations: [SettingsPage]
+  declarations: [SettingsPage,
+  PswComponent,
+  ErrorComponent
+]
 })
 export class SettingsPageModule {}
