@@ -10,7 +10,7 @@
 
 
   .palabra {
-    font-size: 20vw; /* Tamaño de letra relativo al ancho del viewport */
+    font-size: 100vw; /* Tamaño de letra relativo al ancho del viewport */
     text-align: center; /* Centrar el texto horizontalmente */
     vertical-align: middle; /* Centrar el texto verticalmente */
     width: 100%; /* Ocupar todo el ancho disponible */
@@ -19,5 +19,19 @@
     justify-content: center; /* Centrar horizontalmente */
     align-items: center; /* Centrar verticalmente */
     flex-direction: column;
+    color: black;
+} 
+
+.palabra-larga {
+  font-size: 20vw; /* Tamaño de letra relativo al ancho del viewport */
+  width: 100%; /* Ocupar todo el ancho disponible */
+  height: 100vh; /* Ocupar todo el alto del viewport */
+  text-align: center; /* Centrar el texto horizontalmente */
+  vertical-align: middle; /* Centrar el texto verticalmente */
+  display: flex; /* Usar flexbox para centrar vertical y horizontalmente */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  flex-direction: column;
+  color: black;
 
 }

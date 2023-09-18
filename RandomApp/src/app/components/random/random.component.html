@@ -1,6 +1,7 @@
 <div id="container">
 
-  <div id="palabra" class="palabra">
+  <div id="palabra" class="palabra"  [ngClass]="{'palabra-larga': show === 'FIN' || show === 'Iniciando...' }">
+
     {{show}}
     
     <div *ngIf="show == 'FIN'">
